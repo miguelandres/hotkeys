@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 lib/**/*.mpy
+lib/**/._adafruit*
 lib/**/*.py
 lib64/
 parts/
