@@ -28,18 +28,22 @@
 
 """Module to use the neopixels on each macropad button"""
 
+from app import App
+from adafruit_macropad import MacroPad
+
+
 BRIGHTNESS = 0.6
 
 
 class Pixels:
   """Class to use the neopixels"""
 
-  def __init__(self, macropad):
+  def __init__(self, macropad: MacroPad):
     self.pixels = macropad.pixels
     self.pixels.auto_write = False
     self.pixels.brightness = BRIGHTNESS
 
-  def set_app(self, app):
+  def set_app(self, app: App):
     self.macros = app.macros
 
     for i in range(12):
@@ -57,16 +61,16 @@ class Pixels:
     self.pixels.brightness = BRIGHTNESS
     self.pixels.show()
 
-  def highlight(self, key_index, color):
-    self.pixels[key_index] = color
+  def highlight(self, key_number: int, color: int):
+    self.pixels[key_number] = color
     self.pixels.show()
 
-  def reset(self, key_index):
-    self.pixels[key_index] = self.macros[key_index][0]
+  def reset(self, key_number: int):
+    self.pixels[key_number] = self.macros[key_number][0]
     self.pixels.brightness = BRIGHTNESS
     self.pixels.show()
 
-  def reset_all(self, key_index):
-    self.pixels[key_index] = self.macros[key_index][0]
+  def reset_all(self, key_number: int):
+    self.pixels[key_number] = self.macros[key_number][0]
     self.pixels.brightness = BRIGHTNESS
     self.pixels.show()

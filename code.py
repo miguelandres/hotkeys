@@ -101,3 +101,4 @@ while True:
 
   else:
     sequence.end(macropad)
+    pixels.reset(key_number)
