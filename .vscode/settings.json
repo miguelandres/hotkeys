@@ -5,9 +5,9 @@
 		"reportMissingModuleSource": "none"
 	},
 	"python.analysis.extraPaths": [
-		"/Users/miguely/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.19-darwin-arm64/boards/0x239A/0x8108",
-		"/Users/miguely/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.19-darwin-arm64/stubs",
-		"/Users/miguely/Library/Application Support/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20221020/adafruit-circuitpython-bundle-py-20221020/lib"
+		"/Users/myanezbarreto/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.19-darwin-x64/boards/0x239A/0x8108",
+		"/Users/myanezbarreto/.vscode/extensions/joedevivo.vscode-circuitpython-0.1.19-darwin-x64/stubs",
+		"/Users/myanezbarreto/Library/Application Support/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20221021/adafruit-circuitpython-bundle-py-20221021/lib"
 	],
 	"circuitpython.board.version": "7.3.3",
 	"circuitpython.board.vid": "0x239A",
