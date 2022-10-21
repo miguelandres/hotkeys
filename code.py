@@ -35,18 +35,17 @@ from pixels import Pixels
 
 MACRO_FOLDER = '/macros'
 
-macropad = MacroPad()
-screen = Display(macropad)
-pixels = Pixels(macropad)
-last_position = None
-switching_mode = False
-sleeping = False
-last_encoder_switch = macropad.encoder_switch_debounced.pressed
-app_index = 0
+macropad: MacroPad = MacroPad()
+screen: Display = Display(macropad)
+pixels: Pixels = Pixels(macropad)
+last_position: int = 0
+switching_mode: bool = False
+app_index: int = 0
 
 screen.initialize()
-apps: list[App] = load_all_apps(MACRO_FOLDER)
 
+
+apps: list[App] = load_all_apps(MACRO_FOLDER)
 
 if not apps:
   screen.set_title('NO MACRO FILES FOUND')
