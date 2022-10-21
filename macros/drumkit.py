@@ -1,12 +1,12 @@
 # MACROPAD Hotkeys: Drum Kit
 # https://en.wikipedia.org/wiki/General_MIDI#Percussion
 
-from midi import Midi
+from action import Midi
 
 app = {
-    'name' : 'Drum Kit',
+    'name': 'Drum Kit',
     'order': 3,
-    'macros' : [
+    'macros': [
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
         (0x544408, 'HatFot', [Midi(44)]),

@@ -3,9 +3,9 @@
 from adafruit_hid.keycode import Keycode
 
 app = {
-    'name' : 'MacOS Safari',
-    'order': 4,
-    'macros' : [
+    'name': 'MacOS Safari',
+    'order': 0,
+    'macros': [
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
         (0x0A2B5E, '< Back ', [Keycode.COMMAND, '[']),
@@ -21,10 +21,10 @@ app = {
         (0x5E143E, 'Private', [Keycode.COMMAND, 'N']),
         # 4th row ----------
         (0x01255E, 'GitHub ', [Keycode.COMMAND, 't', -Keycode.COMMAND,
-                           'https://github.com/notifications\n']),
+                               'https://github.com/notifications\n']),
         (0x01255E, 'AWS    ', [Keycode.COMMAND, 't', -Keycode.COMMAND,
-                            'http://console.aws.amazon.com\n']),
+                               'http://console.aws.amazon.com\n']),
         (0x01255E, 'Feedly ', [Keycode.COMMAND, 't', -Keycode.COMMAND,
-                             'https://feedly.com/\n'])
+                               'https://feedly.com/\n'])
     ]
 }

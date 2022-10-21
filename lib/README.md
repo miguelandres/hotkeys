@@ -10,6 +10,7 @@ libraries as a bundle from the
 [CircuitPython library bundle](https://circuitpython.org/libraries).
 
 The libraries required by this version of Macropad Hotkeys includes:
+
 - adafruit_debouncer.mpy
 - adafruit_display_shapes
 - adafruit_display_text
