@@ -1,6 +1,12 @@
-The MIT License (MIT)
+# License and Copyright
 
-Copyright (c) 2019 Limor Fried for Adafruit Industries
+Copyright for portions of this project are held by John Ellis, 2001 as part of
+deckerego/Macropad_Hotkeys, licensed under an MIT license.
+
+All other copyright for in this project is held by Miguel Barreto, 2022, also
+licensed under an MIT License
+
+## MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

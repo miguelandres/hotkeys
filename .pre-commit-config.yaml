@@ -49,6 +49,20 @@ repos:
     rev: v1.7.0 # Use the sha / tag you want to point at
     hooks:
       - id: autopep8
+        args: ["--indent-size=2", "--in-place", "--max-line-length=80"]
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        exclude: ".pylintrc"
+        args: [
+            "-rn", # Only display messages
+            "-sn", # Don't display the score
+            "--rcfile=.pylintrc",
+          ]
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.9.0 # Use the ref you want to point at
     hooks:
@@ -58,15 +72,16 @@ repos:
     hooks:
       - id: forbid-binary
       - id: git-dirty
-      - id: markdownlint
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.3.1
     hooks:
       - id: forbid-tabs
       - id: remove-tabs
-        args: ["--whitespaces-count", "4"]
+        args: ["--whitespaces-count", "2"]
       - id: insert-license
         files: \.py$
         args:
+          - --license-filepath
+          - LICENSE.md
           - --comment-style
-          - \#
+          - "#"

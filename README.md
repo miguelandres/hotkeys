@@ -5,7 +5,6 @@ A derivative of the
 example from the
 [Adafruit Learning System Guide](https://learn.adafruit.com/macropad-hotkeys/project-code).
 
-
 ## Modifications
 
 - Rotary button no longer is an action, instead it turns on/off the displays
@@ -16,7 +15,6 @@ example from the
 - When no HID connection is present (power only), keep LEDs off and provide a message
 - Mount filesystem as read-only unless the encoder button is pressed on boot
 - Refactored the code to make it (maybe) easier to modify
-
 
 ## Using
 
@@ -30,7 +28,6 @@ Once you have the macro you like selected, you are free to hammer away at the ke
 
 Click the rotary dial to turn off the display & LEDs - click it again to turn it back on.
 Note the keys continue to respond even when they are not lit.
-
 
 ## Configuration
 
@@ -48,7 +45,6 @@ and a sequence of keys. A "key" can be text, a keyboard key, a consumer control
 key (like play/pause), a mouse action, or a MIDI note. More than one key can
 be specified in a sequence.
 
-
 ## Installing
 
 First make sure that your Macropad has the
@@ -63,7 +59,6 @@ into a directory, then copy the contents of that extracted archive
 into the CIRCUITPY drive that appears when you plug in your Macropad.
 Ensure that the contents of the `lib/` subdirectory are also copied - these are
 the precompiled Adafruit libraries that power the Macropad.
-
 
 ## Updating
 
