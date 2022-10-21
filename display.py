@@ -32,12 +32,14 @@ import displayio
 import terminalio
 from adafruit_display_text import label
 from adafruit_display_shapes.rect import Rect
+from adafruit_macropad import MacroPad
+from app import App
 
 
 class Display:
   """Display class"""
 
-  def __init__(self, macropad):
+  def __init__(self, macropad: MacroPad):
     self.display = macropad.display
     self.display.auto_refresh = False
 
@@ -83,7 +85,7 @@ class Display:
     self.display.show(self.group)
     self.display.refresh()
 
-  def set_app(self, app):
+  def set_app(self, app: App):
     self.group[13].text = app.name
     for i in range(12):
       if i < len(app.macros):
@@ -92,7 +94,7 @@ class Display:
         self.group[i].text = ''
     self.display.refresh()
 
-  def set_title(self, text):
+  def set_title(self, text: str):
     self.group[13].text = text
     for i in range(12):
       self.group[i].text = ''
