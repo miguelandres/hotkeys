@@ -42,6 +42,7 @@ class Display:
   def __init__(self, macropad: MacroPad):
     self.display = macropad.display
     self.display.auto_refresh = False
+    self.font = terminalio.FONT
 
   def initialize(self):
     self.group = displayio.Group()
@@ -50,12 +51,11 @@ class Display:
       y = key_index // 3
       self.group.append(
           label.Label(
-              terminalio.FONT,
+              self.font,
               text='',
               color=0xFFFFFF,
               anchored_position=(
-                  (
-                      self.display.width - 1) * x / 2,
+                  (self.display.width - 1) * x / 2,
                   self.display.height - 1 - (3 - y) * 12
               ),
               anchor_point=(x / 2, 1.0)
@@ -64,7 +64,7 @@ class Display:
     self.group.append(Rect(0, 0, self.display.width, 12, fill=0xFFFFFF))
     self.group.append(
         label.Label(
-            terminalio.FONT,
+            self.font,
             text='',
             color=0x000000,
             anchored_position=(self.display.width//2, -2),
