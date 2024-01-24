@@ -32,6 +32,7 @@ from adafruit_macropad import MacroPad
 from app import App, load_all_apps
 from display import Display
 from pixels import Pixels
+from keypad import Event
 
 MACRO_FOLDER = '/macros'
 
@@ -76,7 +77,7 @@ while True:
   macropad.encoder_switch_debounced.update()
   if macropad.encoder_switch_debounced.released:
     switching_mode = not switching_mode
-  position = macropad.encoder
+  position: int = macropad.encoder
   if position != last_position:
     if switching_mode:
       set_app(position)
@@ -86,11 +87,11 @@ while True:
       else:
         apps[app_index].encoder_decrease_action.run(macropad)
     last_position = position
-  event = macropad.keys.events.get()
+  event: Event | None = macropad.keys.events.get()
   if not event or event.key_number >= len(apps[app_index].macros):
     continue  # No key events, or no corresponding macro, resume loop
-  key_number = event.key_number
-  pressed = event.pressed
+  key_number: int = event.key_number
+  pressed: bool = event.pressed
 
   sequence = Sequence(apps[app_index].macros[key_number]
                       [2] if key_number < 12 else [])
