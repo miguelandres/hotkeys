@@ -29,8 +29,8 @@
 """This module declares the App class which can declare different behaviors of
 the macropad """
 import os
-from action import Action, MediaControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode
+from action import Action, MediaControl
 
 
 class App:
@@ -71,7 +71,6 @@ def load_all_apps(directory: str) -> list[App]:
           KeyError, NameError, IndexError, TypeError
       ) as err:
         print(err)
-        pass
 
   apps.sort(key=lambda m: m.order)
   return apps
