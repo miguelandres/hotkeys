@@ -28,8 +28,6 @@
 
 """This module declares the Button class that represents a single button and
 its behavior"""
-from typing import Callable
-
 from hotkeys.action import Action, Sequence
 
 
@@ -38,31 +36,23 @@ class Button:
 
   def __init__(
       self,
-      title: str | Callable[[], str],
-      color: int | Callable[[], int],
+      title: str,
+      color: int,
       actions: list[Action | int | str],
   ):
-    self._title: str | Callable[[], str] = title
-    self._color: int | Callable[[], int] = color
+    self._title: str = title
+    self._color: int = color
     self._action: Action = Sequence(actions)
 
   @property
   def title(self) -> str:
-    '''Gets the current title of this button. This may change every time it is
-    called since it may be a function'''
-    if isinstance(self._title, str):
-      return self._title
-    else:
-      return self._title()
+    '''Gets the current title of this button.'''
+    return self._title
 
   @property
   def color(self) -> int:
-    '''Gets the current color of this button's pixel. This may change every
-    time it is called'''
-    if isinstance(self._color, int):
-      return self._color
-    else:
-      return self._color()
+    '''Gets the current color of this button's pixel.'''
+    return self._color
 
   @property
   def actions(self) -> Action:

@@ -28,7 +28,6 @@
 
 """This module declares the App class which can declare different behaviors of
 the macropad """
-from typing import Callable
 from action import Action, MediaControl, Sequence
 from adafruit_hid.consumer_control_code import ConsumerControlCode
 from hotkeys.button import Button
@@ -40,17 +39,17 @@ class App:
 
   def __init__(
       self,
-      title: str | Callable[[], str],
+      title: str,
       buttons: list[Button],
       encoder_increase_actions: list[int, str, Action] | Action =
           MediaControl(ConsumerControlCode.VOLUME_INCREMENT),
       encoder_decrease_actions: list[int, str, Action] | Action = MediaControl(
           ConsumerControlCode.VOLUME_DECREMENT)
   ):
-    self._title: str | Callable[[], str] = title
+    self._title: str = title
     self._buttons: list[Button] = buttons
     if len(self._buttons) != 12:
-      raise Exception('App {self.title} does not contain 12 buttons!')
+      raise ValueError(f'App {self.title} does not contain 12 buttons!')
     self._encoder_increase_action: Action = (
         encoder_increase_actions if isinstance(encoder_increase_actions, Action)
         else Sequence(encoder_increase_actions)
@@ -62,7 +61,7 @@ class App:
 
   @property
   def title(self) -> str:
-    return self._title if isinstance(self._title, str) else self._title()
+    return self._title
 
   def get_button(self, button_number: int) -> Button:
     return self._buttons[button_number]
