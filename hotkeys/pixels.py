@@ -67,7 +67,7 @@ class Pixels:
     number_colors = len(colors)
     if number_colors != 12:
       raise ValueError(
-          f"Trying to set all pixels with an array of {number_colors} " +
+          f'Trying to set all pixels with an array of {number_colors} ' +
           'colors instead of 12'
       )
     for i in range(12):
