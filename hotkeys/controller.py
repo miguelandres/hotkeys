@@ -39,8 +39,8 @@ from hotkeys.pixels import Pixels
 
 
 class Controller:
-  '''Controller class that runs the interaction loop and updates the views based
-  on user input'''
+  """Controller class that runs the interaction loop and updates the views based
+  on user input"""
   macropad: MacroPad = MacroPad()
   display: Display = Display(macropad)
   pixels: Pixels = Pixels(macropad)
@@ -66,7 +66,7 @@ class Controller:
       self.macropad.keyboard.release_all()
     except OSError as err:
       print(err)
-      self.display.set_title('NO USB CONNECTION')
+      self.display.set_title('No USB Connection')
       while True:
         pass
     self.set_app(0)
