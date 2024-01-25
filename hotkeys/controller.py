@@ -33,6 +33,7 @@ from keypad import Event
 
 from hotkeys.action import Action
 from hotkeys.app import App
+from hotkeys.apps.intellij import IntelliJ
 from hotkeys.apps.numpad import Numpad
 from hotkeys.apps.safari import Safari
 from hotkeys.display import Display
@@ -49,6 +50,7 @@ class Controller:
   apps: list[App] = [
       Numpad(),
       Safari(),
+      IntelliJ()
   ]
 
   def __init__(self) -> None:
