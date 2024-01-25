@@ -68,12 +68,12 @@ class IntelliJ(App):
 
   ]
 
-  encoder_increase_action = [Keycode.CONTROL, Keycode.RIGHT_ARROW]
-  encoder_decrease_action = [Keycode.CONTROL, Keycode.LEFT_ARROW]
+  _encoder_increase: list[int] = [Keycode.CONTROL, Keycode.RIGHT_ARROW]
+  _encoder_decrease: list[int] = [Keycode.CONTROL, Keycode.LEFT_ARROW]
 
   def __init__(self):
     super().__init__(
         title=self.title,
         buttons=self.buttons,
-        encoder_increase_actions=self.encoder_increase_action,
-        encoder_decrease_actions=self.encoder_increase_action)
+        encoder_increase_actions=self._encoder_increase,
+        encoder_decrease_actions=self._encoder_decrease)
