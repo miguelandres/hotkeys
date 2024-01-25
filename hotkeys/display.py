@@ -66,7 +66,7 @@ class Display:
     # Add a white backround for the title
     self.group.append(Rect(0, 0, self.display.width, 12, fill=0xFFFFFF))
     # Add a black text label for the title
-    self.title_label: Label = label.Label(
+    self.title_label: Label = Label(
         self.font,
         text='',
         color=0x000000,
