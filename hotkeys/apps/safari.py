@@ -34,7 +34,7 @@ from adafruit_hid.keycode import Keycode
 
 
 class Safari(App):
-  '''Numpad app for the hotkeys'''
+  '''Safari app for the hotkeys'''
   title: str = 'Safari'
   # pylint: disable=line-too-long
   buttons: list[Button] = [
