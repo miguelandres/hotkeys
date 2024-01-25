@@ -40,7 +40,7 @@ class Pixels:
 
   def __init__(self, macropad: MacroPad) -> None:
     if macropad.pixels is None:
-      raise Exception('Macropad.pixels is None')
+      raise OSError('Macropad.pixels is None')
     self.pixels: _PixelMapLite = macropad.pixels
     self.pixels.auto_write = False
     self.pixels.brightness = BRIGHTNESS
@@ -58,7 +58,18 @@ class Pixels:
   def __setitem__(self, pixel_number: int, color: int) -> None:
     self.set_pixel_color(pixel_number, color)
 
-  def set_all_pixels(self, color: int) -> None:
+  def reset_all_pixels(self, color: int) -> None:
     for i in range(12):
       self.pixels[i] = color
+    self.pixels.show()
+
+  def set_all_pixels(self, colors: list[int]) -> None:
+    number_colors = len(colors)
+    if number_colors != 12:
+      raise ValueError(
+          f"Trying to set all pixels with an array of {number_colors} " +
+          'colors instead of 12'
+      )
+    for i in range(12):
+      self.pixels[i] = colors[i]
     self.pixels.show()
