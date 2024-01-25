@@ -51,8 +51,8 @@ class Numpad(App):
       Button(title='3    ', color=0x004166, actions=[Keycode.KEYPAD_THREE]),
       # 4th row ---------
       Button(title='0    ', color=0x004166, actions=[Keycode.KEYPAD_ZERO]),
-      Button(title='.    ', color=0x004166, actions=[Keycode.KEYPAD_PERIOD]),
-      Button(title='ENTER', color=0x004166, actions=[Keycode.KEYPAD_ENTER])
+      Button(title='.    ', color=0x640A66, actions=[Keycode.KEYPAD_PERIOD]),
+      Button(title='ENTER', color=0x663F0A, actions=[Keycode.KEYPAD_ENTER])
   ]
 
   def __init__(self):
