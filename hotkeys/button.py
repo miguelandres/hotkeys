@@ -58,7 +58,7 @@ class Button:
   def actions(self) -> Action:
     '''Gets the action that this button executes. The action may have been
     converted from other simpler objects'''
-    Sequence(self._actions)
+    return self._action
 
 
 # A button that does nothing and doesn't light up
