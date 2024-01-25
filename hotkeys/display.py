@@ -105,7 +105,6 @@ class Display:
     self.display.refresh()
 
   def set_labels(self, title: str, button_labels: list[str]):
-    button_labels = (button_labels + 12 * [''])[:12]
     for i in range(12):
       self.labels[i].text = button_labels[i]
     self.title_label.text = title
