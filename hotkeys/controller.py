@@ -34,6 +34,7 @@ from keypad import Event
 from hotkeys.action import Action
 from hotkeys.app import App
 from hotkeys.apps.numpad import Numpad
+from hotkeys.apps.safari import Safari
 from hotkeys.display import Display
 from hotkeys.pixels import Pixels
 
@@ -46,7 +47,8 @@ class Controller:
   pixels: Pixels = Pixels(macropad)
 
   apps: list[App] = [
-      Numpad()
+      Numpad(),
+      Safari(),
   ]
 
   def __init__(self) -> None:
