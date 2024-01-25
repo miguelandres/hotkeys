@@ -71,7 +71,7 @@ class App:
 
   @property
   def button_titles(self) -> list[str]:
-    return map(self._buttons, Button.title)
+    return map(self._buttons, lambda button: button.title)
 
   @property
   def button_colors(self) -> list[int]:
