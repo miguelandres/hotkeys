@@ -52,14 +52,14 @@ class Safari(App):
       Button(title='Reload', color=0x5E143E, actions=[Keycode.COMMAND, 'r']),
       Button(title='Insta', color=0x01255E, actions=[
              Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://instagram.com/\n']),
-      Button(title='New tab', color=0x5E143E, actions=[Keycode.COMMAND, 'n']),
+      Button(title='New tab', color=0x5E143E, actions=[Keycode.COMMAND, 't']),
       # 4th row ---------
       Button(title='Github', color=0x01255E, actions=[
-             Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://github.com/\n']),
+             Keycode.COMMAND, 't', -Keycode.COMMAND, 'http://github.com/\n']),
       Button(title='Twitter', color=0x01255E, actions=[
-             Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://twitter.com/\n']),
+             Keycode.COMMAND, 't', -Keycode.COMMAND, 'http://twitter.com/\n']),
       Button(title='Youtube', color=0x01255E, actions=[
-             Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://youtube.com/\n'])
+             Keycode.COMMAND, 't', -Keycode.COMMAND, 'http://youtube.com/\n'])
   ]
 
   def __init__(self):
