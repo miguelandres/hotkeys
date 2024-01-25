@@ -28,8 +28,8 @@
 
 """This module declares the App class which can declare different behaviors of
 the macropad """
-from action import Action, MediaControl, Sequence
 from adafruit_hid.consumer_control_code import ConsumerControlCode
+from hotkeys.action import Action, MediaControl, Sequence
 from hotkeys.button import Button
 
 
