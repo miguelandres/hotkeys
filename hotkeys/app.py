@@ -64,13 +64,19 @@ class App:
   def title(self) -> str:
     return self._title if isinstance(self._title, str) else self._title()
 
-  @property
-  def buttons(self) -> str:
-    return self._buttons
+  def get_button(self, button_number: int) -> Button:
+    return self._buttons[button_number]
+
+  def __getitem__(self, button_number: int) -> Button:
+    return self.get_button(button_number)
 
   @property
   def button_titles(self) -> list[str]:
     return map(self._buttons, Button.title)
+
+  @property
+  def button_colors(self) -> list[int]:
+    return map(self._buttons, Button.color)
 
   @property
   def encoder_increase_action(self) -> Action:
