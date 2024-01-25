@@ -30,6 +30,7 @@
 
 from app import App
 from adafruit_macropad import MacroPad
+from adafruit_macropad import _PixelMapLite
 
 
 BRIGHTNESS = 0.6
@@ -39,7 +40,9 @@ class Pixels:
   """Class to use the neopixels"""
 
   def __init__(self, macropad: MacroPad):
-    self.pixels = macropad.pixels
+    if macropad.pixels is None:
+      raise Exception('Macropad.pixels is None')
+    self.pixels: _PixelMapLite = macropad.pixels
     self.pixels.auto_write = False
     self.pixels.brightness = BRIGHTNESS
 
