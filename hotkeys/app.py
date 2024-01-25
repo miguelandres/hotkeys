@@ -37,12 +37,13 @@ class App:
   """Class that defines the behavior of each button for a particular macropad
   configuration"""
 
+  # pylint: disable=dangerous-default-value
   def __init__(
       self,
       title: str,
       buttons: list[Button],
       encoder_increase_actions: list[int, str, Action] | Action =
-          MediaControl(ConsumerControlCode.VOLUME_INCREMENT),
+          [MediaControl(ConsumerControlCode.VOLUME_INCREMENT)],
       encoder_decrease_actions: list[int, str, Action] | Action = MediaControl(
           ConsumerControlCode.VOLUME_DECREMENT)
   ):
