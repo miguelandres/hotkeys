@@ -71,11 +71,11 @@ class App:
 
   @property
   def button_titles(self) -> list[str]:
-    return map(self._buttons, lambda button: button.title)
+    return list(map(Button.title, self._buttons))
 
   @property
   def button_colors(self) -> list[int]:
-    return map(self._buttons, Button.color)
+    return list(map(Button.color, self._buttons))
 
   @property
   def encoder_increase_action(self) -> Action:
