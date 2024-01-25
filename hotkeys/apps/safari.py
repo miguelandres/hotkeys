@@ -50,13 +50,14 @@ class Safari(App):
       Button(title='Down', color=0x5E4001, actions=[' ']),
       # 3rd row ---------
       Button(title='Reload', color=0x5E143E, actions=[Keycode.COMMAND, 'r']),
-      Button(title='Insta', color=0x5E143E, actions=[
+      Button(title='Insta', color=0x01255E, actions=[
              Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://instagram.com/\n']),
-      Button(title='Private', color=0x5E143E, actions=[Keycode.COMMAND, 'N']),
+      Button(title='New tab', color=0x5E143E, actions=[Keycode.COMMAND, 'n']),
       # 4th row ---------
       Button(title='Github', color=0x01255E, actions=[
              Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://github.com/\n']),
-      Button(title='Twitter', color=0x01255E, actions=[Keycode.KEYPAD_PERIOD]),
+      Button(title='Twitter', color=0x01255E, actions=[
+             Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://twitter.com/\n']),
       Button(title='Youtube', color=0x01255E, actions=[
              Keycode.COMMAND, 'n', -Keycode.COMMAND, 'http://youtube.com/\n'])
   ]
