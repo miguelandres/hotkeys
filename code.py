@@ -27,7 +27,7 @@
 # SOFTWARE.
 
 """Entry point to the code for the Hotkeys program"""
-from action import Sequence
+from hotkeys.action import Sequence
 from adafruit_macropad import MacroPad
 from app import App, load_all_apps
 from display import Display

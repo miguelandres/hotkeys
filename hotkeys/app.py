@@ -28,9 +28,10 @@
 
 """This module declares the App class which can declare different behaviors of
 the macropad """
-import os
+from typing import Callable
+from action import Action, MediaControl, Sequence
 from adafruit_hid.consumer_control_code import ConsumerControlCode
-from hotkeys.action import Action, MediaControl
+from hotkeys.button import Button
 
 
 class App:
@@ -39,38 +40,42 @@ class App:
 
   def __init__(
       self,
-      appdata,
-      encoder_increase_macro: Action =
+      title: str | Callable[[], str],
+      buttons: list[Button],
+      encoder_increase_actions: list[int, str, Action] | Action =
           MediaControl(ConsumerControlCode.VOLUME_INCREMENT),
-      encoder_decrease_macro: Action = MediaControl(
+      encoder_decrease_actions: list[int, str, Action] | Action = MediaControl(
           ConsumerControlCode.VOLUME_DECREMENT)
   ):
-    self.name = appdata['name']
-    self.order = appdata['order']
-    self.macros = appdata['macros']
-    self.encoder_increase_action: Action = encoder_increase_macro
-    self.encoder_decrease_action: Action = encoder_decrease_macro
+    self._title: str | Callable[[], str] = title
+    self._buttons: list[Button] = buttons
+    if len(self._buttons) != 12:
+      raise Exception('App {self.title} does not contain 12 buttons!')
+    self._encoder_increase_action: Action = (
+        encoder_increase_actions if isinstance(encoder_increase_actions, Action)
+        else Sequence(encoder_increase_actions)
+    )
+    self._encoder_decrease_action: Action = (
+        encoder_decrease_actions if isinstance(encoder_decrease_actions, Action)
+        else Sequence(encoder_decrease_actions)
+    )
 
+  @property
+  def title(self) -> str:
+    return self._title if isinstance(self._title, str) else self._title()
 
-def load_all_apps(directory: str) -> list[App]:
-  apps: list[App] = []
+  @property
+  def buttons(self) -> str:
+    return self._buttons
 
-  try:
-    files = os.listdir(directory)
-  except OSError as err:
-    print(err)
-    return apps
+  @property
+  def button_titles(self) -> list[str]:
+    return map(self._buttons, Button.title)
 
-  for filename in files:
-    if filename.endswith('.py'):
-      try:
-        module = __import__(directory + '/' + filename[:-3])
-        apps.append(App(module.app))
-      except (
-          SyntaxError, ImportError, AttributeError,
-          KeyError, NameError, IndexError, TypeError
-      ) as err:
-        print(err)
+  @property
+  def encoder_increase_action(self) -> Action:
+    return self._encoder_increase_action
 
-  apps.sort(key=lambda m: m.order)
-  return apps
+  @property
+  def encoder_decrease_action(self) -> Action:
+    return self._encoder_decrease_action

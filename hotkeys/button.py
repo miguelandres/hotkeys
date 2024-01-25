@@ -26,56 +26,50 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""This module declares the App class which can declare different behaviors of
-the macropad """
+"""This module declares the Button class that represents a single button and
+its behavior"""
 from typing import Callable
-from action import Action, MediaControl, Sequence
-from adafruit_hid.consumer_control_code import ConsumerControlCode
-from button import Button
+
+from hotkeys.action import Action, Sequence
 
 
-class App:
-  """Class that defines the behavior of each button for a particular macropad
-  configuration"""
+class Button:
+  """Class that represents the configuration and status of a button"""
 
   def __init__(
       self,
       title: str | Callable[[], str],
-      buttons: list[Button],
-      encoder_increase_actions: list[int, str, Action] | Action =
-          MediaControl(ConsumerControlCode.VOLUME_INCREMENT),
-      encoder_decrease_actions: list[int, str, Action] | Action = MediaControl(
-          ConsumerControlCode.VOLUME_DECREMENT)
+      color: int | Callable[[], int],
+      actions: list[Action | int | str],
   ):
     self._title: str | Callable[[], str] = title
-    self._buttons: list[Button] = buttons
-    if len(self._buttons) != 12:
-      raise Exception('App {self.title} does not contain 12 buttons!')
-    self._encoder_increase_action: Action = (
-        encoder_increase_actions if isinstance(encoder_increase_actions, Action)
-        else Sequence(encoder_increase_actions)
-    )
-    self._encoder_decrease_action: Action = (
-        encoder_decrease_actions if isinstance(encoder_decrease_actions, Action)
-        else Sequence(encoder_decrease_actions)
-    )
+    self._color: int | Callable[[], int] = color
+    self._action: Action = Sequence(actions)
 
   @property
   def title(self) -> str:
-    return self._title if isinstance(self._title, str) else self._title()
+    '''Gets the current title of this button. This may change every time it is
+    called since it may be a function'''
+    if isinstance(self._title, str):
+      return self._title
+    else:
+      return self._title()
 
   @property
-  def buttons(self) -> str:
-    return self._buttons
+  def color(self) -> int:
+    '''Gets the current color of this button's pixel. This may change every
+    time it is called'''
+    if isinstance(self._color, int):
+      return self._color
+    else:
+      return self._color()
 
   @property
-  def button_titles(self) -> list[str]:
-    return map(self._buttons, Button.title)
+  def actions(self) -> Action:
+    '''Gets the action that this button executes. The action may have been
+    converted from other simpler objects'''
+    Sequence(self._actions)
 
-  @property
-  def encoder_increase_action(self) -> Action:
-    return self._encoder_increase_action
 
-  @property
-  def encoder_decrease_action(self) -> Action:
-    return self._encoder_decrease_action
+# A button that does nothing and doesn't light up
+empty_button = Button('', 0, [])
